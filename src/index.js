@@ -12,6 +12,8 @@ let config = null
 
 const incomingMiddleware = (event, next) => {
   if (!db) { return next() }
+  
+  if(!event.user) { return next()}
 
   if (_.includes(['delivery', 'read'], event.type)) {
     return next()
